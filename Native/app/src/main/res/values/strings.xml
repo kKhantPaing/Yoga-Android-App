@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Coursework</string>
+    <string-array name="dayOfWeek">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+    <string-array name="difficulty">
+        <item>Beginner</item>
+        <item>Beginner I</item>
+        <item>Intermediate</item>
+        <item>Intermediate I</item>
+        <item>Advanced</item>
+    </string-array>
+    <string-array name="typeOfClass">
+        <item>Flow Yoga</item>
+        <item>Aerial Yoga</item>
+        <item>Family Yoga</item>
+    </string-array>
+</resources>
