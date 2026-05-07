@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -179,11 +180,43 @@ public class DBHelper extends SQLiteOpenHelper {
         apiHelper.postQuery(context, requestModel);
     }
 
+    // save user for later use
+    public void saveUser(String username, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_SETTING_USERNAME, username);
+        values.put(COLUMN_SETTING_PASSWORD, password);
+        db.update(TABLE_SETTING, values, null, null);
+        db.close();
+
+        apiHelper = new APIHelper(getBaseURL());
+
+        RequestModel requestModel = new RequestModel();
+        requestModel.setStoredProcedure(true);
+        requestModel.setProcedureName("getConnection");
+        apiHelper = new APIHelper(getBaseURL());
+        apiHelper.postQuery(context, requestModel);
+    }
+
+    // get saved user
+    public HashMap<String, String> getSavedUser(){
+        HashMap<String, String> res = new HashMap<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        query = "Select " + COLUMN_SETTING_USERNAME + ", " + COLUMN_SETTING_PASSWORD + " From" + TABLE_SETTING;
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()){
+            res.put("username", cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SETTING_USERNAME)));
+            res.put("password", cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SETTING_PASSWORD)));
+        }
+        return res;
+    }
+
     // Check Username and Password
     public int login(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         query = "SELECT COUNT(*) FROM " + TABLE_SETTING + " WHERE " + COLUMN_SETTING_USERNAME + " = '" + username +
-                "' AND " + COLUMN_SETTING_PASSWORD + " = '" + Helper.getMD5Hash(password) + "'";
+                "' AND " + COLUMN_SETTING_PASSWORD + " = '" + password + "'";
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
         int count = cursor.getInt(0);
