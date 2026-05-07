@@ -1,211 +1,146 @@
 # Yoga-Android-App
 
-A comprehensive Yoga class management system with dual implementations: Flutter for client-side user applications and Native Android for admin-side management.
+Yoga-Android-App is a yoga class management platform with two complementary applications:
 
-## Overview
+- **Flutter**: User-facing client app for discovering, registering, and enrolling in yoga classes.
+- **Native Android**: Admin panel for managing classes, users, registrations, and enrollments.
 
-Yoga-Android-App is a complete yoga class management platform with two separate applications:
-- **Flutter (Client Side)**: User-facing application for discovering, registering, and enrolling in yoga classes
-- **Native Android (Admin Side)**: Administrative dashboard for managing classes, users, and enrollments
-
-Both applications work in tandem to provide a complete yoga class management ecosystem with user authentication, class management, registration handling, and enrollment tracking.
-
-## Features
-
-### Client Side (Flutter)
-- **Browse Yoga Classes**: Discover available classes with detailed information
-- **User Registration & Authentication**: Secure account creation and login
-- **Class Registration**: Register for available yoga classes
-- **Enrollment Management**: View and manage active enrollments
-- **Real-time Updates**: Live class availability and status notifications
-- **Cross-Platform Support**: Available on iOS, Android, and Web
-
-### Admin Side (Native Android)
-- **Class Management**: Create, edit, and manage yoga classes
-- **User Management**: Manage user accounts and permissions
-- **Registration Management**: Monitor and approve class registrations
-- **Enrollment Tracking**: Track and manage student enrollments
-- **Analytics Dashboard**: View enrollment statistics and class performance
-- **Backend Integration**: API-driven administration tools
+Both apps are designed to work together and support backend-driven workflows for yoga studios, instructors, and students.
 
 ## Project Structure
 
 ```
 Yoga-Android-App/
-├── Flutter/                          # Client-side application (Cross-platform)
-│   ├── app/                         # Flutter application module
-│   ├── build.gradle.kts             # Flutter build configuration
-│   ├── settings.gradle.kts          # Flutter settings configuration
-│   ├── gradle/                      # Gradle wrapper and dependencies
-│   └── local.properties             # Local environment configuration
-│
-└── Native/                          # Admin-side application (Native Android)
-    ├── app/                         # Android application module
+├── Flutter/                          # Flutter client app
+│   ├── app/                          # Flutter application module
+│   ├── build.gradle.kts              # Build configuration
+│   ├── settings.gradle.kts           # Gradle settings
+│   ├── gradle/                       # Gradle wrapper and dependency configuration
+│   └── local.properties              # Local environment settings
+└── Native/                           # Native Android admin app
+    ├── app/                          # Android application module
     │   ├── src/
-    │   │   ├── main/               # Main application source code
-    │   │   ├── androidTest/        # Android instrumentation tests
-    │   │   └── test/               # Unit tests
-    │   └── build.gradle            # Android build configuration
-    ├── build.gradle                # Root build configuration
-    ├── settings.gradle             # Project settings
-    ├── gradle/                     # Gradle wrapper and utilities
-    └── local.properties            # Local environment configuration
+    │   │   ├── main/                 # Main source code
+    │   │   ├── androidTest/          # Instrumentation tests
+    │   │   └── test/                 # Local unit tests
+    │   └── build.gradle              # Module build file
+    ├── build.gradle                  # Root build configuration
+    ├── settings.gradle               # Gradle settings
+    ├── gradle/                       # Gradle wrapper files
+    └── local.properties              # Local environment settings
 ```
 
-## Requirements & Prerequisites
+## Features
+
+### Flutter (Client)
+- Browse yoga classes with detailed descriptions
+- User registration and authentication
+- Class enrollment and booking
+- Manage current enrollments
+
+### Native Android (Admin)
+- Create and manage yoga classes
+- Monitor and approve class registrations
+- Track enrollment status
+- Connect to backend APIs for live data updates
+
+## Requirements
 
 ### Flutter App
-- **Flutter SDK**: Version 3.0 or higher
-- **Dart**: Version 2.17 or higher
-- **Android SDK**: API level 21 (Android 5.0) or higher
-- **Android Studio**: Latest stable version (optional but recommended)
-- **Gradle**: 7.0 or higher
+- Flutter SDK 3.0+
+- Dart 2.17+
+- Android SDK API level 21+
+- Android Studio or compatible editor
+- Gradle 7+
 
 ### Native Android App
-- **Android SDK**: API level 21 (Android 5.0) or higher
-- **Minimum API Level**: 21
-- **Target API Level**: 34 or higher
-- **Android Studio**: Latest stable version
-- **Gradle**: 7.0 or higher
-- **Java**: Version 11 or higher
+- Android SDK API level 21+
+- Android Studio
+- Java 11+
+- Gradle 7+
 
-## Installation & Setup
+## Setup
 
-### Flutter App Setup (Client Side)
-
-1. **Install Flutter SDK**:
-   - Visit https://flutter.dev/docs/get-started/install
-   - Follow platform-specific installation instructions
-
-2. **Clone and navigate to the Flutter project**:
+### Flutter App
+1. Install Flutter: https://flutter.dev/docs/get-started/install
+2. Open a terminal and navigate to the Flutter folder:
    ```bash
    cd Flutter
    ```
-
-3. **Install dependencies**:
+3. Install dependencies:
    ```bash
    flutter pub get
    ```
-
-4. **Connect a device or start an emulator**:
+4. Start a device or emulator:
    ```bash
    flutter devices
    ```
-
-5. **Run the application**:
+5. Run the app:
    ```bash
    flutter run
    ```
 
-### Native Android App Setup (Admin Side)
-
-1. **Install Android Studio and Android SDK**:
-   - Download from https://developer.android.com/studio
-   - Install required SDK versions and tools
-
-2. **Clone and open the Native project**:
-   ```bash
-   cd Native
-   ```
-
-3. **Open in Android Studio**:
-   - File → Open → Select the `Native` folder
-   - Android Studio will automatically sync Gradle files
-
-4. **Configure local.properties** (if needed):
+### Native Android App
+1. Install Android Studio: https://developer.android.com/studio
+2. Open the `Native` folder in Android Studio.
+3. Configure `local.properties` if your SDK path is not detected:
    ```properties
-   sdk.dir=/path/to/your/android/sdk
+   sdk.dir=C:\Users\<YourUser>\AppData\Local\Android\sdk
    ```
+4. Sync Gradle and build the project.
 
-## Build & Run Instructions
+## Build & Run
 
-### Flutter App (Client Side)
-
-**Debug Build**:
+### Flutter App
+**Debug:**
 ```bash
 cd Flutter
 flutter run
 ```
 
-**Release Build**:
+**Release:**
 ```bash
 flutter build apk --release
 flutter build appbundle --release
 ```
 
-**Run on specific device**:
+**Run on device:**
 ```bash
 flutter run -d <device_id>
 ```
 
-### Native Android App (Admin Side)
+### Native Android App
+**Debug via Android Studio:**
+- Use the Run action or press `Shift + F10`
 
-**Debug Build** (via Android Studio):
-- Click the "Run" button or press `Shift + F10`
-
-**Debug Build** (via Gradle):
+**Debug via Gradle:**
 ```bash
 cd Native
 ./gradlew assembleDebug
 ./gradlew installDebug
 ```
 
-**Release Build**:
+**Release:**
 ```bash
 ./gradlew assembleRelease
 ./gradlew bundleRelease
 ```
 
-**Run tests**:
+**Tests:**
 ```bash
-./gradlew test                    # Unit tests
-./gradlew connectedAndroidTest   # Instrumentation tests
+./gradlew test
+./gradlew connectedAndroidTest
 ```
-
-## Architecture
-
-### Flutter Architecture (Client Side)
-- **Framework**: Flutter with Dart
-- **Platform Target**: iOS, Android, and Web
-- **State Management**: (To be configured)
-- **API Communication**: HTTP client for backend integration
-- **Navigation**: Flutter routing system
-- **Data Persistence**: Local storage for user preferences and enrolled classes
-- **Purpose**: User-facing application for class discovery and enrollment
-
-### Native Android Architecture (Admin Side)
-- **Language**: Java
-- **Platform Target**: Android only
-- **Build System**: Gradle
-- **API Communication**: Retrofit/OkHttp for backend integration
-- **Architecture Pattern**: (To be configured)
-- **Data Persistence**: SharedPreferences and SQLite
-- **Purpose**: Administrative dashboard for class and enrollment management
-
-## Development
-
-### Flutter Development
-```bash
-cd Flutter
-flutter pub get
-flutter run --debug
-```
-
-### Native Development
-```bash
-cd Native
-./gradlew build
-```
-
-Build outputs will be available in respective `build/` directories.
 
 ## Notes
 
-- The `Flutter/` project is the **client-side** application for end users
-- The `Native/` project is the **admin-side** application for administrators
-- Both implementations share the same backend API (to be integrated)
-- Flutter provides cross-platform support (iOS, Android, Web) for users
-- Native Android is optimized specifically for admin dashboard functionality
-- Use the appropriate folder based on whether you're developing user or admin features
-- API integration details will be added in future updates
+- The Flutter app is intended for yoga students and clients.
+- The Flutter client requires backend API integration to function; without API support it cannot be used.
+- The Native Android app is intended for studio administrators and instructors.
+- Backend API configuration and authentication setup may require additional environment-specific settings.
+- The `Flutter/` project is the **client-side** application for end users.
+- The `Native/` project is the **admin-side** application for administrators.
+- Both implementations share the same backend API (to be integrated).
+- Native Android is optimized specifically for admin dashboard functionality.
+- Use the appropriate folder based on whether you're developing user or admin features.
 
